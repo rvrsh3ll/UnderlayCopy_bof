@@ -101,18 +101,20 @@ secretsdump.py -ntds out.dit -system out.system LOCAL
 
 ---
 
-## OPSEC
+## 🔐 OPSEC Comparison (Detection Surface)
 
-### Comparison with the original PowerShell script
+> ✅ = better for OPSEC (stealthier / fewer privileges)  
+> ❌ = worse for OPSEC (more detectable / more intrusive)  
+> ⚠️ = noisy behavior but required  
 
-| Artifact | PS1 (kfallahi) | This BOF |
-|---|---|---|
-| AMSI scan | ✅ yes | ❌ no |
-| ScriptBlock Logging (EID 4104) | ✅ yes | ❌ no |
-| `powershell.exe` process creation | ✅ yes | ❌ no |
-| Registry APIs (`RegSaveKeyEx`) | ❌ no | ❌ no |
-| Raw volume read (`\\.\C:`) | ✅ yes | ✅ yes |
-| Requires SYSTEM | ❌ no | ❌ no |
+| Artifact                          | PS1 (kfallahi) | This BOF ⭐️ |
+|----------------------------------|---------------|------------|
+| AMSI scan                        | ❌ detectable  | ✅ stealth  |
+| ScriptBlock Logging (EID 4104)   | ❌ detectable  | ✅ stealth  |
+| `powershell.exe` process         | ❌ visible     | ✅ no PS    |
+| Registry APIs (`RegSaveKeyEx`)   | ✅ safe        | ✅ safe     |
+| Raw volume read (`\\.\C:`)       | ⚠️ noisy       | ⚠️ noisy    |
+| Requires SYSTEM                  | ✅ no          | ✅ no       |
 
 ### Recommendations
 
