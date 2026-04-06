@@ -2,7 +2,7 @@ from havoc import Demon, RegisterCommand
 from struct import pack, calcsize
 import os
 
-BOF_PATH = "/home/tlowe/Modules_rubr0/Underlay_bof/Underlay_bof.o"
+BOF_PATH = "/path/to/Underlay_bof/Underlay_bof.o"
 
 class Packer:
     def __init__(self):
